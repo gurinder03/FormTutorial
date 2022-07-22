@@ -1,0 +1,18 @@
+{{title}}
+<br>
+<br>
+<form #EmployeeForm="ngForm" (ngSubmit)="AddEmployees(EmployeeForm.value)">
+  <input type="text" #EmpName="ngModel" minlength="5" placeholder="Enter Name" name="EmpName" required ngModel>
+  <span *ngIf="EmpName.invalid && EmpName.touched" style="color:red;"> *  Please Enter Name</span>
+  <br>
+  <br>
+  <input type="text" placeholder="Enter Email Address"  required="" #EmpAddress="ngModel" name="EmpAddress" ngModel>
+  <span *ngIf="EmpAddress.invalid && EmpAddress.touched" style="color:red;"> *  Please Email Address</span>
+  <br>
+  <br>
+  <input type="text" placeholder="Enter Mobile" minlength="10" pattern="[0-9]+$" required #EmpMobile="ngModel" name="EmpMobile" ngModel>
+  <span *ngIf="EmpMobile.invalid && EmpMobile.touched" style="color:red;"> *  Please Mobile Number</span>
+  <br>
+  <br>
+<input type="submit" name="btnSubmit" value="Submit">
+</form>
