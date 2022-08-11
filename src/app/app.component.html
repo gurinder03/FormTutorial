@@ -1,18 +1,52 @@
 {{title}}
+<h1>Please Subscribe Tech Engineer</h1>
 <br>
 <br>
-<form #EmployeeForm="ngForm" (ngSubmit)="AddEmployees(EmployeeForm.value)">
+<form #EmployeeForm="ngForm" (ngSubmit)="AddEmployees(EmployeeForm)">
+  <input type="button" (click)="PrefilledData(EmployeeForm)" value="Prefilled">
+<br>
+<br>
+
+<div ngModelGroup="PersonalData" #PersonalData="ngModelGroup">
+ 
   <input type="text" #EmpName="ngModel" minlength="5" placeholder="Enter Name" name="EmpName" required ngModel>
-  <span *ngIf="EmpName.invalid && EmpName.touched" style="color:red;"> *  Please Enter Name</span>
+  <!-- <span *ngIf="EmpName.invalid && EmpName.touched" style="color:red;"> *  Please Enter Name</span> -->
   <br>
   <br>
-  <input type="text" placeholder="Enter Email Address"  required="" #EmpAddress="ngModel" name="EmpAddress" ngModel>
-  <span *ngIf="EmpAddress.invalid && EmpAddress.touched" style="color:red;"> *  Please Email Address</span>
+  <input type="text" placeholder="Enter Email Address"  pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #EmpAddress="ngModel" name="EmpAddress" ngModel>
+  <!-- <span *ngIf="EmpAddress.invalid && EmpAddress.touched" style="color:red;"> *  Please Email Address</span> -->
   <br>
   <br>
   <input type="text" placeholder="Enter Mobile" minlength="10" pattern="[0-9]+$" required #EmpMobile="ngModel" name="EmpMobile" ngModel>
-  <span *ngIf="EmpMobile.invalid && EmpMobile.touched" style="color:red;"> *  Please Mobile Number</span>
+  <!-- <span *ngIf="EmpMobile.invalid && EmpMobile.touched" style="color:red;"> *  Please Mobile Number</span> -->
   <br>
+  <span *ngIf="PersonalData.invalid && PersonalData.touched" style="color:red;"> *  Please Enter Personal Details</span> 
   <br>
+</div>
 <input type="submit" name="btnSubmit" value="Submit">
+<input type="submit" name="btnClear" (click)="ClearForm(EmployeeForm)" value="Clear Form">
 </form>
+
+<table>
+  <tr aria-colspan="1">
+<th>
+      First Name
+</th>
+<th>
+  Email
+</th>
+<th>
+  Mobile Number
+</th>
+  </tr>
+  <td>
+    {{firstName}}
+  </td>
+
+  <td>
+    {{EmailID}}
+  </td>
+  <td>
+    {{Mobile}}
+  </td>
+</table>
